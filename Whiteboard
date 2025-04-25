@@ -1,0 +1,9 @@
+At first glance this is similar to the neighborhood library program. We basically 
+need to utilize getter and setter methods to retrieve user data. The user data in 
+this case is date|time|description|vendor|amount. So that's where we will begin.
+
+
+EXTRA EXTRA
+Add easter eggs 
+
+Add a UI
