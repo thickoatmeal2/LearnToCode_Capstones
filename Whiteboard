@@ -7,7 +7,7 @@ Note 1: basic homescreen is functional, built in the same fashion as neighorhood
 library, and a basic UI has been written (HTML,react). We will hold off on the UI 
 for now. 
 Now we are building the getter and setter methods in a new java class. Should be
-done by tomorrow.
+done by tomorrow. ALSO REMEMBER java.time.* is useful!!!
 
 
 
