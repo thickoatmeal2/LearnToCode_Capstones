@@ -89,7 +89,34 @@ public class Main {
                 return;
             }
 
-            LocalDateTime
+            LocalDateTime dateTime = LocalDateTime.of(date, time);
+            Transaction transaction = new Transaction(dateTime, description, vendor, -amount);
+            saveTransaction(transaction);
+            System.out.println("Payment added successfully");
+        } catch (Exception e) {
+            System.out.println("Invalid input. Payment not added.: " + e.getMessage());
         }
     }
+
+    //this method displays te ledger screen
+    private static void showLedgerScreen() {
+        String ledgerPrompt = "Ledger Screen (Transaction History):\n" +
+                "A) All Transactions\n" +
+                "D) Deposits\n" +
+                "C) Home\n" +
+                "Enter your choice:";
+
+        while (true) {
+            System.out.print(ledgerPrompt);
+            String choice = scanner.nextLine().trim().toUpperCase();
+
+            switch (choice) {
+            } case "A":
+                displayTransactions(transactions, "All Transactions");
+                break;
+            case "D":
+                List<Transaction> deposits = new ArrayList<>
+        }
+
+}
 }
