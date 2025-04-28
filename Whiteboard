@@ -1,6 +1,16 @@
+4/25
 At first glance this is similar to the neighborhood library program. We basically 
 need to utilize getter and setter methods to retrieve user data. The user data in 
 this case is date|time|description|vendor|amount. So that's where we will begin.
+
+Note 1: basic homescreen is functional, built in the same fashion as neighorhood 
+library, and a basic UI has been written (HTML,react). We will hold off on the UI 
+for now. 
+Now we are building the getter and setter methods in a new java class. Should be
+done by tomorrow. ALSO REMEMBER java.time.* is useful!!!
+
+Note 2: The Homescreen is complete, now we will begin working on the Ledger screen. 
+
 
 
 EXTRA EXTRA
