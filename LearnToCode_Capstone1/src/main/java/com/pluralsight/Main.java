@@ -1,45 +1,95 @@
 package com.pluralsight;
-import java.util.Scanner;
+import java.io.*;
+import java.time.*;
+import java.util.*;
+
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
+    private static scanner scanner = new scanner(System.in);
 
-    public static void main(String[] args) {
+    //this method displays the home screen
+    public static void showHomeScreen() {
+        String homePrompt = "Home Screen: What would you like to do today?\n"+
+                "D) Add Deposit\n" +
+                "P) Make Payments\n" +
+                "L) Ledger\n" +
+                "X) exit\n";
 
-        ShowScreenHome();
+        while (true) {
+            System.out.print(homePrompt);
+            String choice = scanner.nextLine().trim().toUpperCase();
 
-        //Transaction transaction = new Transaction(date, time, descricption, vendor, amount)
+            switch (choice) {
+                case "D":
+                    addDeposit();
+                    break;
+                case "P":
+                    makePayment():
+                    break;
+                case "L":
+                    showLedgerScreen():
+                    break;
+                case "X":
+                    System.out.println("Exiting");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter D, P, L, or X");
 
+            }
+        }
+    }
+
+    //this method displays the deposit screen
+    private static void addDeposit(){
+    //try catch method to check for invalid input; if input is invalid, user will be prompted to try again
+    try {
+        System.out.print("Enter date in (YY-MM-DD format");
+        String dateStr = scanner.nextLine().trim();
+        LocalDate date = LocaleDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        System.out.print("Enter time (HH:MM:SS): ");
+        String timeStr = scanner.nextLine().trim();
+        LocalTime time = LocalTime.parse(timeStr, DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+        System.out.print("Enter amount"):
+        double amount = Double.parseDouble(scanner.nextLine().trim());
+        if (amount <= 0) {
+            System.out.println("Amount must be positive for deposits")
+            return;
         }
 
-    private static void ShowScreenHome() {
+        LocalDateTime dateTime = LocalDateTime.of(date, time);
+        Transaction transaction = new Transaction(dateTime, description, vendor, amount);
+        saveTransaction(transaction);
+        System.out.println("Deposit added successfully");
+    }catch (Exception e) {
+        System.out.println("Invalid input. Try again" + e.getMessage());
+    }
+    }
+    private static void makePayment() {
+        try {
+            System.out.print("Enter time (YYYY-MM-DD): ");
+            String dateStr = scanner.nextLine().trim();
+            LocalDate date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 
-        //Displays the homescreen, asks user what they want to do
-        String homeScreenPrompt = "Hello User!\n" +
-                "What would you like to do today? (1)\n" +
-                "Make deposit( 2)\n" +
-                "Make payment (debit) (3)\n" +
-                "View recent transactions (ledger) (4)\n" +
-                "View stock market prices (5)\n" +
-                "View crypto prices (6)\n" +
-                "Exit (7)\n";
+            System.out.print("Enter time (HH:MM:SS): ");
+            String timeStr = scanner.nextLine().trim();
+            LocalTime time = LocalTime.parse(timeStr, DateTimeFormatter.ofPatter("HH:mm:ss"));
 
-        int option;
+            System.out.print("Enter description: ");
+            String description = scanner.nextLine().trim();
 
+            System.out.print("Enter vendor: ");
+            String vendor = scanner.nextLine().trim();
 
-        //Use try catch for error handling
-
-        do {
-            System.out.println(homeScreenPrompt);
-            try {
-                option = Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Not a valid option, try again");
-                option = -1;
-                continue;
+            System.out.print("Enter amount");
+            double amount = Double.parseDouble(Scanner.nextLine().)
+            if (amount <= 0) {
+                System.out.println("Amount must be positive.");
+                return;
             }
 
-        } while (option != 0);
-
+            LocalDateTime
+        }
     }
 }
