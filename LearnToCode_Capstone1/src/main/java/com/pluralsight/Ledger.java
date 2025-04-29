@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.util.*;
-import java.util.Scanner;
 
 public class Ledger {
     private Scanner scanner;
@@ -26,6 +25,7 @@ public class Ledger {
             switch (choice) {
                 case "A":
                     displayTransactions(transactions, "All Transactions");
+                    waitForKeyPress();
                     break;
                 case "D":
                     List<Transaction> deposits = new ArrayList<>();
@@ -35,6 +35,7 @@ public class Ledger {
                         }
                     }
                     displayTransactions(deposits, "Deposits");
+                    waitForKeyPress();
                     break;
                 case "H":
                     return; // Return to Home Screen
@@ -55,5 +56,10 @@ public class Ledger {
             System.out.println(t);
         }
         System.out.println();
+    }
+
+    private void waitForKeyPress() {
+        System.out.println("Press Enter to continue...");
+        scanner.nextLine();
     }
 }
