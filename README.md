@@ -147,8 +147,6 @@ Optional: Existing transactions.csv in project root.
 
 Setup
 
-Project Structure
-
 your-project/
 ├── src/
 │   └── com/
