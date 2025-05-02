@@ -1,5 +1,4 @@
 package com.pluralsight;
-
 import java.io.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -51,12 +50,8 @@ public class Main {
     private static void addDeposit() {
         try {
             LocalDateTime dateTime = LocalDateTime.now();
-
-            System.out.print("Enter description: ");
-            String description = scanner.nextLine().trim();
-
-            System.out.print("Enter vendor: ");
-            String vendor = scanner.nextLine().trim();
+            String description = "deposit";
+            String vendor = "user";
 
             System.out.print("Enter amount (positive): ");
             double amount = Double.parseDouble(scanner.nextLine().trim());
