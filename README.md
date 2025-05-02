@@ -247,4 +247,3 @@ License
 MIT License (update as needed).
 
 Built with Java 8+. Contributions welcome!
-
