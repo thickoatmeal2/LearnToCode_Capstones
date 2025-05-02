@@ -1,5 +1,4 @@
 package com.pluralsight;
-
 import java.time.*;
 import java.time.format.*;
 
@@ -48,4 +47,3 @@ public class Transaction implements Comparable<Transaction> {
                 vendor,
                 amount);
     }
-}
