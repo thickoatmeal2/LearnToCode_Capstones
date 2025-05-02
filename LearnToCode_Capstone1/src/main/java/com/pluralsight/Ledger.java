@@ -1,65 +1,49 @@
 package com.pluralsight;
+import java.time.*;
+import java.time.format.*;
 
-import java.util.*;
+public class Transaction implements Comparable<Transaction> {
+    private LocalDateTime dateTime;
+    private String description;
+    private String vendor;
+    private double amount;
 
-public class Ledger {
-    private Scanner scanner;
-    private List<Transaction> transactions;
-
-    public Ledger(Scanner scanner, List<Transaction> transactions) {
-        this.scanner = scanner;
-        this.transactions = transactions;
+    public Transaction(LocalDateTime dateTime, String description, String vendor, double amount) {
+        this.dateTime = dateTime;
+        this.description = description;
+        this.vendor = vendor;
+        this.amount = amount;
     }
 
-    public void showLedgerScreen() {
-        String ledgerPrompt = "Ledger Screen (Transaction History):\n" +
-                "A) All Transactions\n" +
-                "D) Deposits\n" +
-                "H) Home\n" +
-                "Enter your choice: ";
+    public LocalDateTime getDateTime() { return dateTime; }
+    public String getDescription() { return description; }
+    public String getVendor() { return vendor; }
+    public double getAmount() { return amount; }
 
-        while (true) {
-            System.out.print(ledgerPrompt);
-            String choice = scanner.nextLine().trim().toUpperCase();
-
-            switch (choice) {
-                case "A":
-                    displayTransactions(transactions, "All Transactions");
-                    waitForKeyPress();
-                    break;
-                case "D":
-                    List<Transaction> deposits = new ArrayList<>();
-                    for (Transaction t : transactions) {
-                        if (t.getAmount() > 0) {
-                            deposits.add(t);
-                        }
-                    }
-                    displayTransactions(deposits, "Deposits");
-                    waitForKeyPress();
-                    break;
-                case "H":
-                    return; // Return to Home Screen
-                default:
-                    System.out.println("Invalid choice. Please enter A, D, or H.");
-            }
-        }
+    @Override
+    public int compareTo(Transaction other) {
+        return other.dateTime.compareTo(this.dateTime); // Sort newest first
     }
 
-    private void displayTransactions(List<Transaction> transactions, String title) {
-        if (transactions.isEmpty()) {
-            System.out.println("No " + title.toLowerCase() + " found.");
-            return;
-        }
-        System.out.println("\n" + title + ":");
-        System.out.printf("%-12s %-10s %-20s %-15s %-10s%n", "Date", "Time", "Description", "Vendor", "Amount");
-        for (Transaction t : transactions) {
-            System.out.println(t);
-        }
-        System.out.println();
+    public String toCsv() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return String.format("%s|%s|%s|%s|%.2f",
+                dateTime.format(dateFormatter),
+                dateTime.format(timeFormatter),
+                description,
+                vendor,
+                amount);
     }
 
-    private void waitForKeyPress() {
-        System.out.println("Press Enter to continue...");
-        scanner.nextLine();
+    @Override
+    public String toString() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return String.format("%-12s %-10s %-20s %-15s $%-10.2f",
+                dateTime.format(dateFormatter),
+                timeFormatter.format(dateTime),
+                description,
+                vendor,
+                amount);
     }
-}
