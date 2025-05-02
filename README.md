@@ -3,6 +3,8 @@
 The parts of the code that I found particularly interesting to write were the parts that made the application more useful and user friendly. For example, I orginally prompted users to input the date and time of all transactions in a YYYY-MM-DD, HH-MM-SS format, however I quickly realized this was a bit silly and also subject to human error. So instead I used LocalDateTime.now() method to record the exact moment of the transaction, without having to ask the user to remember the exact date and time down to the second. This also saved me a few lines of code. 
 Another example of increasing user friendliness and usability was ommiting the description and vendor prompts when a user makes a deposit. Instead, I used a default description (deposit) and a default vendor (user) when a user makes a deposit.
 
+![Screenshot 2025-05-02 084349](https://github.com/user-attachments/assets/4b5a0696-1a2b-4699-8ccc-bfc47847681f)
+
 Financial Transaction Manager
 A command-line Java application for managing financial transactions, including deposits, payments, and transaction history. Transactions are stored in a CSV file and can be viewed or filtered via a Ledger Screen and Reports Screen.
 Features
